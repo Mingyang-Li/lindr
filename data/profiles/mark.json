@@ -1,0 +1,21 @@
+{
+    "id" : 1,
+    "fullName" : "Mark Richards",
+    "profilePicture" : "https://cdn.pixabay.com/photo/2019/05/24/10/59/business-man-4226005_1280.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Unpaid Intern",
+    "companyName" : "PETA",
+    "industry" : "Humanitarian",
+    "netWorth" : -5000.00,
+    "numberOfConnections" : 3,
+    "ratingsFromOthers": [
+        { 
+            "id" : 3,
+            "comment" : "Very lazy and unmotivated"
+        },
+        {
+            "id" : 6,
+            "comment" : "Doesn't wash laundry"
+        }
+    ]
+}
