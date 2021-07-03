@@ -16,9 +16,12 @@ class SwipingViewModel {
     lazy private(set) var currentProfile =
         BehaviorRelay<ProfileViewModel>(value: profiles[currentIndex])
     lazy private(set) var nextProfile =
-        BehaviorRelay<ProfileViewModel?>(value: profiles[currentIndex + 1])
+        BehaviorRelay<ProfileViewModel?>(value: profiles[nextIndex])
     
-    private let currentIndex = 0
+    private var currentIndex = 0
+    private var nextIndex: Int {
+        return currentIndex + 1
+    }
     
     private weak var navigationController: LindrNavigationController?
     
@@ -27,11 +30,21 @@ class SwipingViewModel {
     }
     
     func profileSwipeLeft() {
-        
+        loadNextProfile()
     }
     
     func profileSwipeRight() {
-        
+        loadNextProfile()
+    }
+    
+    private func loadNextProfile() {
+        if nextIndex < profiles.count {
+           currentIndex = nextIndex
+            currentProfile.accept(profiles[currentIndex])
+            nextProfile.accept(profiles[nextIndex])
+        } else {
+            nextProfile.accept(nil)
+        }
     }
     
 }

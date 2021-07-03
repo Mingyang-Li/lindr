@@ -102,19 +102,23 @@ class SwipingViewController: UIViewController {
     private func doSwipeLeftAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+        } completion: { (_) in
+            self.viewModel.profileSwipeLeft()
+            self.doResetSwipeAnimation(animated: false)
         }
-        viewModel.profileSwipeLeft()
     }
     
     private func doSwipeRightAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+        } completion: { (_) in
+            self.viewModel.profileSwipeRight()
+            self.doResetSwipeAnimation(animated: false)
         }
-        viewModel.profileSwipeRight()
     }
     
-    private func doResetSwipeAnimation() {
-        UIView.animate(withDuration: 0.3) {
+    private func doResetSwipeAnimation(animated: Bool = true) {
+        UIView.animate(withDuration: animated ? 0.3 : 0) {
             self.topProfileView.transform = .identity
         }
     }
