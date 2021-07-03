@@ -6,5 +6,7 @@ target 'lindr' do
   use_frameworks!
   
   pod 'Cartography'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end
