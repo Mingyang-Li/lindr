@@ -1,0 +1,18 @@
+{
+    "id" : 15,
+    "fullName" : "Candy Wynne",
+    "profilePicture" : "https://upload.wikimedia.org/wikipedia/commons/a/ac/Black_woman_with_women%27s_suit_5.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Actress",
+    "companyName" : "Shortland Street",
+    "industry" : "Entertainment",
+    "netWorth" : 2820.00,
+    "numberOfConnections" : 3,
+    "ratingsFromOthers": [
+        { 
+            "id" : 11,
+            "comment" : "Really needs to grow up and get a real job",
+            "ratingOutOfTen" : 6
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "id" : 7,
+    "fullName" : "Angelina Garrett",
+    "profilePicture" : "https://st.focusedcollection.com/14026668/i/1800/focused_173749226-stock-photo-businesswoman-working-in-office.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "HR Manager",
+    "companyName" : "Trendy Start-Up",
+    "industry" : "Getting People in Trouble",
+    "netWorth" : 87300.00,
+    "numberOfConnections" : 22164,
+    "ratingsFromOthers": [
+        { 
+            "id" : 10,
+            "comment" : "Angelina would always try to get me fired from my job",
+            "ratingOutOfTen" : 4
+        },
+        { 
+            "id" : 1,
+            "comment" : "Angelina really needs to chill out",
+            "ratingOutOfTen" : 3
+        }
+    ]
+}

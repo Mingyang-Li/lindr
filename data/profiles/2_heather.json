@@ -1,0 +1,18 @@
+{
+    "id" : 2,
+    "fullName" : "Heather Katherine",
+    "profilePicture" : "https://www.publicdomainpictures.net/pictures/190000/nahled/young-business-woman-1470305689586.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Secretary",
+    "companyName" : "McDonald's",
+    "industry" : "Eco-Unfriendly Food",
+    "netWorth" : 52000.00,
+    "numberOfConnections" : 214,
+    "ratingsFromOthers": [
+        { 
+            "id" : 1,
+            "comment" : "Heather, please take me back. I'm sorry",
+            "ratingOutOfTen" : 10
+        }
+    ]
+}
