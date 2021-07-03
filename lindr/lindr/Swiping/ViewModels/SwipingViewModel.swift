@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SwipingViewModel {
     
-    var profiles = [ProfileViewModel]()
+    private lazy var profiles = ProfileViewModelFactory.getProfileViewModels()
+    
+    lazy private(set) var currentProfile =
+        BehaviorRelay<ProfileViewModel>(value: profiles[currentIndex])
+    lazy private(set) var nextProfile =
+        BehaviorRelay<ProfileViewModel>(value: profiles[currentIndex + 1])
+    
+    private let currentIndex = 0
     
     private weak var navigationController: LindrNavigationController?
     
@@ -17,4 +26,13 @@ class SwipingViewModel {
         self.navigationController = navigationController
     }
     
+    func profileSwipeLeft() {
+        
+    }
+    
+    func profileSwipeRight() {
+        
+    }
+    
 }
+

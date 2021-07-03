@@ -7,17 +7,18 @@
 
 import UIKit
 import Cartography
+import RxSwift
 
 class SwipingViewController: UIViewController {
     
     let viewModel: SwipingViewModel
+    let disposeBag = DisposeBag()
     
     var likeButton = UIButton()
     var justBusinessButton = UIButton()
     
-    let leftProfileView = ProfileView()
-    let centreProfileView = ProfileView()
-    let rightProfileView = ProfileView()
+    let topProfileView = ProfileView()
+    let bottomProfileView = ProfileView()
     
     init(viewModel: SwipingViewModel) {
         self.viewModel = viewModel
@@ -31,6 +32,7 @@ class SwipingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupBindings()
     }
     
     private func setupUI() {
@@ -40,34 +42,36 @@ class SwipingViewController: UIViewController {
     }
     
     private func setupProfileViews() {
-        view.addSubview(leftProfileView)
-        view.addSubview(centreProfileView)
-        view.addSubview(rightProfileView)
+        view.addSubview(bottomProfileView)
+        view.addSubview(topProfileView)
         
         constrain(view,
-                  leftProfileView,
-                  centreProfileView,
-                  rightProfileView) { (view,
-                                       leftProfileView,
-                                       centreProfileView,
-                                       rightProfileView) in
-            centreProfileView.width == view.width * 0.75
-            centreProfileView.height == view.height * 0.6
-            centreProfileView.center == view.center
+                  topProfileView,
+                  bottomProfileView) { (view,
+                                        topProfileView,
+                                        bottomProfileView) in
+            bottomProfileView.width == view.width * 0.75
+            bottomProfileView.height == view.height * 0.6
+            bottomProfileView.center == view.center
             
-            leftProfileView.size == centreProfileView.size
-            leftProfileView.centerY == view.centerY
-            leftProfileView.right == view.left
-            
-            rightProfileView.size == centreProfileView.size
-            rightProfileView.centerY == view.centerY
-            rightProfileView.left == view.right
+            topProfileView.size == bottomProfileView.size
+            topProfileView.center == bottomProfileView.center
         }
     }
     
     private func setupLikeAndBusinessButtons() {
         
     }
-
+    
+    private func setupBindings() {
+        viewModel.currentProfile.bind { [weak self] (viewModel) in
+            self?.topProfileView.setViewModel(viewModel: viewModel)
+        }.disposed(by: disposeBag)
+        
+        viewModel.nextProfile.bind { [weak self] (viewModel) in
+            self?.bottomProfileView.setViewModel(viewModel: viewModel)
+        }.disposed(by: disposeBag)
+    }
+    
 }
 

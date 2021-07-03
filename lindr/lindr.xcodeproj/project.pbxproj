@@ -10,6 +10,7 @@
 		338E93A0D1BC9A02720C92A6 /* Pods_lindr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EF6D4865448C72381934B /* Pods_lindr.framework */; };
 		C7091D26269011CB006CEC8C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D25269011CB006CEC8C /* ProfileView.swift */; };
 		C7091D2A269012B1006CEC8C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D29269012B1006CEC8C /* ProfileViewModel.swift */; };
+		C7091D35269018C8006CEC8C /* ProfileViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */; };
 		C79159AA26900D7800F06506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159A926900D7800F06506 /* AppDelegate.swift */; };
 		C79159AE26900D7800F06506 /* SwipingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159AD26900D7800F06506 /* SwipingViewController.swift */; };
 		C79159B326900D7900F06506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79159B226900D7900F06506 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		A23EF6D4865448C72381934B /* Pods_lindr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lindr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7091D25269011CB006CEC8C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C7091D29269012B1006CEC8C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelFactory.swift; sourceTree = "<group>"; };
 		C79159A626900D7800F06506 /* lindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79159A926900D7800F06506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79159AD26900D7800F06506 /* SwipingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		C7091D24269011B5006CEC8C /* Swiping */ = {
 			isa = PBXGroup;
 			children = (
+				C7091D33269018B5006CEC8C /* Model */,
 				C7091D28269012A5006CEC8C /* ViewModels */,
 				C7091D23269011AB006CEC8C /* Views */,
 			);
@@ -86,8 +89,16 @@
 			children = (
 				C79159CD2690107C00F06506 /* SwipingViewModel.swift */,
 				C7091D29269012B1006CEC8C /* ProfileViewModel.swift */,
+				C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C7091D33269018B5006CEC8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C791599D26900D7800F06506 = {
@@ -248,6 +259,7 @@
 				C7091D26269011CB006CEC8C /* ProfileView.swift in Sources */,
 				C79159CE2690107C00F06506 /* SwipingViewModel.swift in Sources */,
 				C79159CB2690102400F06506 /* LindrNavigationController.swift in Sources */,
+				C7091D35269018C8006CEC8C /* ProfileViewModelFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

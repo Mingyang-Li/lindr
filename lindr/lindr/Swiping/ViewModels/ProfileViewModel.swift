@@ -5,10 +5,12 @@
 //  Created by Jamie Walker on 3/07/21.
 //
 
-import Foundation
+import UIKit
 
-class ProfileViewModel {
+struct ProfileViewModel {
     
-    
+    var image: UIImage
+    var name: String
+    var incomeText: String
     
 }
