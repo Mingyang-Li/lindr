@@ -12,7 +12,6 @@ const Swipe: React.FC = () => {
     return (
         <>
             <h1>Swipe page</h1>
-            <TinderCard onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['right', 'left']}>Hello, World!</TinderCard>
         </>
     )
 };

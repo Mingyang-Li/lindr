@@ -7,13 +7,11 @@ import SignInBtn from '../../components/buttons/SignInBtn';
 const Login: React.FC = () => {
     return (
         <>
-            <Typography>Lindr</Typography>
-            <Typography>Pefecting your work-love balance</Typography>
+            <Typography variant="h1">Lindr.</Typography>
+            <Typography variant="h4">Pefecting your work-love balance</Typography>
             <SignInBtn />
             <SignUpBtn />
-            
             <img src={loginImg} />
-
         </>
     )
 };

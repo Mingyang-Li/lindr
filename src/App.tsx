@@ -7,8 +7,8 @@ import Profile from './pages/account/Profile';
 import Messaging from './pages/chat/Messaging';
 import CreditCardSync from './pages/integration/CreditCardSync';
 import LinkedInSync from './pages/integration/LinkedInSync';
-import AppBar from './components/AppBar';
 import theme from './theme/theme';
+import Container from '@material-ui/core/Container';
 
 
 interface routeData {
@@ -50,14 +50,15 @@ const App: React.FC = () => {
     <div className="App">
       <GlobalContext.Provider value={store}>
         <MuiThemeProvider theme={theme}>
-          <Router>
-            <Switch>
-              {routes.map((r, i) => (
-                <Route key={i} path={r.path} exact={r.exact} render={() => r.component} />
-              ))}
-            </Switch>
-          </Router>
-          {/* <AppBar/> */}
+          <Container maxWidth="lg">
+            <Router>
+              <Switch>
+                {routes.map((r, i) => (
+                  <Route key={i} path={r.path} exact={r.exact} render={() => r.component} />
+                ))}
+              </Switch>
+            </Router>
+          </Container>
         </MuiThemeProvider>
       </GlobalContext.Provider>
     </div>

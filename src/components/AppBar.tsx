@@ -1,12 +1,12 @@
 import React from 'react';
+import { Router, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from '@material-ui/icons/Folder';
-import RestoreIcon from '@material-ui/icons/Restore';
+import PersonIcon from '@material-ui/icons/Person';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import loginImg from '../assets/login.png';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 const useStyles = makeStyles({
   root: {
@@ -15,23 +15,22 @@ const useStyles = makeStyles({
 });
 
 const AppBar: React.FC = () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('recents');
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setValue(newValue);
+  };
+
   return (
-    <h1>app bar</h1>
-  )
-  // const classes = useStyles();
-  // const [value, setValue] = React.useState('recents');
-
-  // const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
-  //   setValue(newValue);
-  // };
-
-  // return (
-  //   <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-  //     <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-  //     <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-  //     <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-  //     <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
-  //   </BottomNavigation>
-  // );
+    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+      <BottomNavigationAction label="Lindr" value="recents" icon={<LoyaltyIcon />} />
+      <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
+      {/* <Link to={'/login'}> */}
+        <BottomNavigationAction label="DMs" value="dms" icon={<ChatBubbleIcon />} />
+      {/* </Link> */}
+      <BottomNavigationAction label="Profile" value="folder" icon={<PersonIcon />} />
+    </BottomNavigation>
+  );
 }
 export default AppBar;

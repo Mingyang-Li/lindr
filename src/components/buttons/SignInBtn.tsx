@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,11 +18,11 @@ const SignInBtn: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <Button variant="outlined" size="medium" color="secondary" className={classes.margin}>
-        Sign In
-    </Button>
-    </div>
+    <Link to="/swipe" style={{ textDecoration: 'none' }}>
+        <Button variant="outlined" color="secondary" className={classes.margin} fullWidth>
+            Sign In
+        </Button>
+    </Link>
   );
 }
 export default SignInBtn;

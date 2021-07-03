@@ -24,7 +24,7 @@ const theme = createMuiTheme({
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(','),
+    ].join(',')
   }
 });
 export default theme;

@@ -5,7 +5,7 @@ const SignUpBtn: React.FC = () => {
 
   return (
     <div>
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="secondary" fullWidth>
         REGISTER
       </Button>
     </div>
