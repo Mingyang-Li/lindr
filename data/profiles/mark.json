@@ -11,11 +11,13 @@
     "ratingsFromOthers": [
         { 
             "id" : 3,
-            "comment" : "Very lazy and unmotivated"
+            "comment" : "Very lazy and unmotivated",
+            "ratingOutOfTen" : 2
         },
         {
             "id" : 6,
-            "comment" : "Doesn't wash laundry"
+            "comment" : "Doesn't wash laundry",
+            "ratingOutOfTen" : 3
         }
     ]
 }
