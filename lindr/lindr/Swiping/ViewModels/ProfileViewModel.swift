@@ -10,7 +10,5 @@ import UIKit
 struct ProfileViewModel {
     
     var image: UIImage
-    var name: String
-    var incomeText: String
     
 }

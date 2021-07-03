@@ -12,18 +12,10 @@ struct ProfileViewModelFactory {
     static func getProfileViewModels() -> [ProfileViewModel] {
         
         return [
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile1"),
-                             name: "Lisa",
-                             incomeText: "35k"),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile2"),
-                             name: "Lisa",
-                             incomeText: "35k"),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile3"),
-                             name: "Lisa",
-                             incomeText: "35k"),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile4"),
-                             name: "Lisa",
-                             incomeText: "35k")
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile1")),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile2")),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile3")),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile4"))
         ]
         
     }

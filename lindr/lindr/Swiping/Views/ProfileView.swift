@@ -13,8 +13,6 @@ class ProfileView: UIView {
     private var viewModel: ProfileViewModel?
     
     let profileImageView = UIImageView()
-    let nameLabel = UILabel()
-    let incomeLabel = UILabel()
     
     init() {
         super.init(frame: .zero)
@@ -25,43 +23,31 @@ class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        layer.cornerRadius = 20
-    }
-    
     func setViewModel(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
         applyViewModel()
     }
     
     private func setupUI() {
-        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.contentMode = .scaleAspectFit
         addSubview(profileImageView)
-        addSubview(nameLabel)
-        addSubview(incomeLabel)
-        clipsToBounds = true
+        
+        profileImageView.layer.cornerRadius = 20
+        layer.shadowOpacity = 0.4
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 12
         
         constrain(self,
-                  profileImageView,
-                  nameLabel,
-                  incomeLabel) { (view,
-                                  profileImageView,
-                                  nameLabel,
-                                  incomeLabel) in
-            let padding: CGFloat = 20
+                  profileImageView) { (view,
+                                       profileImageView) in
             profileImageView.edges == view.edges
-            nameLabel.bottom == view.bottom - padding
-            nameLabel.left == view.left + padding
-            incomeLabel.top == view.top + padding
-            incomeLabel.left == view.left + padding
         }
     }
     
     private func applyViewModel() {
         guard let viewModel = viewModel else { return }
         profileImageView.image = viewModel.image
-        nameLabel.text = viewModel.name
-        incomeLabel.text = viewModel.incomeText
     }
     
 }

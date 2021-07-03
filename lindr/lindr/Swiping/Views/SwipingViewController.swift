@@ -19,9 +19,14 @@ class SwipingViewController: UIViewController {
     
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
+    let noMoreProfilesLabel = UILabel()
     
-    var minimumTranslationToSwipe: CGFloat {
+    private var minimumTranslationToSwipe: CGFloat {
         return view.bounds.width / 3
+    }
+    
+    private var defaultBottomImageViewTransform: CGAffineTransform {
+        return CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: 0, y: -60)
     }
     
     init(viewModel: SwipingViewModel) {
@@ -41,13 +46,27 @@ class SwipingViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        setupNoMoreProfilesLabel()
         setupProfileViews()
         setupLikeAndBusinessButtons()
+    }
+    
+    private func setupNoMoreProfilesLabel() {
+        view.addSubview(noMoreProfilesLabel)
+        noMoreProfilesLabel.text = "No more profiles"
+        noMoreProfilesLabel.textColor = UIColor(white: 1 / 2, alpha: 1)
+        
+        constrain(view,
+                  noMoreProfilesLabel) { (view,
+                                          noMoreProfilesLabel) in
+            noMoreProfilesLabel.center == view.center
+        }
     }
     
     private func setupProfileViews() {
         view.addSubview(bottomProfileView)
         view.addSubview(topProfileView)
+        bottomProfileView.transform = defaultBottomImageViewTransform
         
         constrain(view,
                   topProfileView,
@@ -69,15 +88,18 @@ class SwipingViewController: UIViewController {
     
     private func setupBindings() {
         viewModel.currentProfile.bind { [weak self] (viewModel) in
-            self?.topProfileView.setViewModel(viewModel: viewModel)
+            if let viewModel = viewModel {
+                self?.topProfileView.setViewModel(viewModel: viewModel)
+            }
+            self?.topProfileView.isHidden = viewModel == nil
         }.disposed(by: disposeBag)
         
         viewModel.nextProfile.bind { [weak self] (viewModel) in
             if let viewModel = viewModel {
                 self?.bottomProfileView.setViewModel(viewModel: viewModel)
-            } else {
-                self?.bottomProfileView.isHidden = true
             }
+            self?.bottomProfileView.isHidden = viewModel == nil
+            
         }.disposed(by: disposeBag)
         
         topProfileView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(topProfileViewPanned(gesture:))))
@@ -102,6 +124,7 @@ class SwipingViewController: UIViewController {
     private func doSwipeLeftAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+            self.bottomProfileView.transform = .identity
         } completion: { (_) in
             self.viewModel.profileSwipeLeft()
             self.doResetSwipeAnimation(animated: false)
@@ -111,6 +134,7 @@ class SwipingViewController: UIViewController {
     private func doSwipeRightAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+            self.bottomProfileView.transform = .identity
         } completion: { (_) in
             self.viewModel.profileSwipeRight()
             self.doResetSwipeAnimation(animated: false)
@@ -120,6 +144,7 @@ class SwipingViewController: UIViewController {
     private func doResetSwipeAnimation(animated: Bool = true) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
             self.topProfileView.transform = .identity
+            self.bottomProfileView.transform = self.defaultBottomImageViewTransform
         }
     }
     
