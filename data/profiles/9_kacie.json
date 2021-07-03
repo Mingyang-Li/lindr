@@ -1,0 +1,18 @@
+{
+    "id" : 9,
+    "fullName" : "Kacie Boone",
+    "profilePicture" : "https://live.staticflickr.com/2/1487218_3c316b73c6_b.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Receptionist",
+    "companyName" : "Big Important Law Firm Ltd.",
+    "industry" : "Siphoning People's Money",
+    "netWorth" : 19300.00,
+    "numberOfConnections" : 422,
+    "ratingsFromOthers": [
+        { 
+            "id" : 1,
+            "comment" : "See you in the break room ;)",
+            "ratingOutOfTen" : 3
+        }
+    ]
+}

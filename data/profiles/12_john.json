@@ -1,0 +1,12 @@
+{
+    "id" : 12,
+    "fullName" : "John Gibson",
+    "profilePicture" : "https://cdn10.picryl.com/photo/1990/01/01/cpt-john-cannafax-an-air-force-flight-instructor-poses-for-a-photograph-in-b4ad33-1600.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Flight Instructor",
+    "companyName" : "Air New Zealand",
+    "industry" : "Pilot Licensing",
+    "netWorth" : 344000.00,
+    "numberOfConnections" : 88,
+    "ratingsFromOthers": []
+}

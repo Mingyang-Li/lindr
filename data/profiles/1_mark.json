@@ -6,16 +6,16 @@
     "jobTitle" : "Unpaid Intern",
     "companyName" : "PETA",
     "industry" : "Humanitarian",
-    "netWorth" : -5000.00,
+    "netWorth" : -7000.00,
     "numberOfConnections" : 3,
     "ratingsFromOthers": [
         { 
-            "id" : 3,
+            "id" : 2,
             "comment" : "Very lazy and unmotivated",
             "ratingOutOfTen" : 2
         },
         {
-            "id" : 6,
+            "id" : 4,
             "comment" : "Doesn't wash laundry",
             "ratingOutOfTen" : 3
         }

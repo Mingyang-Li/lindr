@@ -1,0 +1,23 @@
+{
+    "id" : 4,
+    "fullName" : "Makenzie Finch",
+    "profilePicture" : "https://p0.pxfuel.com/preview/290/27/713/business-corporate-business-woman-urban.jpg",
+    "city" : "Hamilton",
+    "jobTitle" : "Data Entery Clerk",
+    "companyName" : "Waikato Council",
+    "industry" : "Copy and Pasting",
+    "netWorth" : 10300.00,
+    "numberOfConnections" : 74,
+    "ratingsFromOthers": [
+        { 
+            "id" : 11,
+            "comment" : "Makenzie has a lot of very important people as connections",
+            "ratingOutOfTen" : 8
+        },
+        { 
+            "id" : 1,
+            "comment" : "Very easy on the eyes ;)",
+            "ratingOutOfTen" : 9
+        }
+    ]
+}

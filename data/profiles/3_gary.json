@@ -1,0 +1,23 @@
+{
+    "id" : 3,
+    "fullName" : "Gary Hunnicutt",
+    "profilePicture" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXEPZYliQDQU3ikot2C6kxNodjgQwT-E0bhZnIQY-N0xH_dA49McXxzyecl25lr4F4UJQ&usqp=CAU",
+    "city" : "Auckland",
+    "jobTitle" : "CEO",
+    "companyName" : "Big Important Law Firm Ltd.",
+    "industry" : "Siphoning People's Money",
+    "netWorth" : 43500000.00,
+    "numberOfConnections" : 1098,
+    "ratingsFromOthers": [
+        { 
+            "id" : 2,
+            "comment" : "WOW! Gary has the flashest car I've ever been in!!",
+            "ratingOutOfTen" : 8
+        },
+        { 
+            "id" : 9,
+            "comment" : "Gary's Corvette really is something else",
+            "ratingOutOfTen" : 9
+        }
+    ]
+}

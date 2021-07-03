@@ -1,0 +1,23 @@
+{
+    "id" : 6,
+    "fullName" : "Jaden Edison",
+    "profilePicture" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp4xp5_qZ2OU89et548XnC5XsjPs3upd3zNw&usqp=CAU",
+    "city" : "Auckland",
+    "jobTitle" : "Aspiring Rapper",
+    "companyName" : "SoundCloud",
+    "industry" : "Entertainment",
+    "netWorth" : 31.50,
+    "numberOfConnections" : 193,
+    "ratingsFromOthers": [
+        { 
+            "id" : 15,
+            "comment" : "Jaden SUCKS at rapping. GIVE UP",
+            "ratingOutOfTen" : 1
+        },
+        { 
+            "id" : 12,
+            "comment" : "Somebody needs to tell Jaden no...",
+            "ratingOutOfTen" : 1
+        }
+    ]
+}

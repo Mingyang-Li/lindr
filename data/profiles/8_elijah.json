@@ -1,0 +1,18 @@
+{
+    "id" : 8,
+    "fullName" : "Elijah Horton",
+    "profilePicture" : "https://www.wolterskluwer.com/-/media/project/wolterskluwer/oneweb/www/grc/images/ct/ct-corp/cards/ct-registered-agent-1536x1024.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Counsellor",
+    "companyName" : "BetterMe",
+    "industry" : "Mental Health",
+    "netWorth" : 32000.00,
+    "numberOfConnections" : 3,
+    "ratingsFromOthers": [
+        { 
+            "id" : 2,
+            "comment" : "Elijah kept trying to butt into my life issues. It was kind of annoying",
+            "ratingOutOfTen" : 5
+        }
+    ]
+}

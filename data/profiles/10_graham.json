@@ -1,0 +1,18 @@
+{
+    "id" : 10,
+    "fullName" : "Graham Warwick",
+    "profilePicture" : "https://www.maxpixel.net/static/photo/1x/Office-Suite-Businessman-Business-Business-Man-Man-5371915.jpg",
+    "city" : "Auckland",
+    "jobTitle" : "Designer",
+    "companyName" : "Datacom",
+    "industry" : "Mobile App Development",
+    "netWorth" : 1210700.00,
+    "numberOfConnections" : 73,
+    "ratingsFromOthers": [
+        { 
+            "id" : 1,
+            "comment" : "Graham really is a nice guy. But he's the kind of guy I'd just be friends with",
+            "ratingOutOfTen" : 5
+        }
+    ]
+}
