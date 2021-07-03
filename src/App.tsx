@@ -38,7 +38,7 @@ const App: React.FC = () => {
       exact: true
     },
     {
-      path: "linkedinsync",
+      path: "/linkedinsync",
       component: <LinkedInSync />,
       exact: true
     }
@@ -49,12 +49,9 @@ const App: React.FC = () => {
         <MuiThemeProvider theme={store}>
           <Router>
             <Switch>
-              {/* <Route path="/" exact={true} render={() => <Login />} /> */}
-              {
-                routes.map((r, i) => {
-                  <Route key={i} path={r.path} exact={r.exact} render={() => r.component} />
-                })
-              }
+              {routes.map((r, i) => (
+                <Route key={i} path={r.path} exact={r.exact} render={() => r.component} />
+              ))}
             </Switch>
           </Router>
         </MuiThemeProvider>
@@ -62,5 +59,4 @@ const App: React.FC = () => {
     </div>
   );
 }
-
 export default App;
