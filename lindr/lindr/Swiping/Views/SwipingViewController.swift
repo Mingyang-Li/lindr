@@ -15,8 +15,8 @@ class SwipingViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     let likeAndJustBusinessButtonsParentView = UIView()
-    let likeButton = RoundedButton()
-    let justBusinessButton = RoundedButton()
+    let likeButton = RoundedIconButton()
+    let justBusinessButton = RoundedIconButton()
     
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
@@ -88,6 +88,8 @@ class SwipingViewController: UIViewController {
         likeAndJustBusinessButtonsParentView.addSubview(likeButton)
         likeAndJustBusinessButtonsParentView.addSubview(justBusinessButton)
         
+        likeButton.setIcon(Resources.love, sizeRatioToDot: 0.5)
+        justBusinessButton.setIcon(Resources.justBusiness, sizeRatioToDot: 0.5)
         likeButton.backgroundColor = Resources.pink
         justBusinessButton.backgroundColor = Resources.blue
         
@@ -211,5 +213,8 @@ fileprivate struct Resources {
                               green: 64 / 255,
                               blue: 87 / 255,
                               alpha: 1)
+    
+    static let love = UIImage(named: "Love")!
+    static let justBusiness = UIImage(named: "JustBusiness")!
     
 }
