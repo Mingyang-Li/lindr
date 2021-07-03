@@ -7,18 +7,21 @@ import Profile from './pages/account/Profile';
 import Messaging from './pages/chat/Messaging';
 import CreditCardSync from './pages/integration/CreditCardSync';
 import LinkedInSync from './pages/integration/LinkedInSync';
+import AppBar from './components/AppBar';
+import theme from './theme/theme';
+
 
 interface routeData {
   path: string | string[];
   component: ReactElement;
   exact?: boolean;
-}
+} 
 
 const App: React.FC = () => {
   const store = {"key": "value"};
   const routes: routeData[] = [
     {
-      path: "/login",
+      path: "/",
       component: <Login />,
       exact: true
     },
@@ -46,7 +49,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <GlobalContext.Provider value={store}>
-        <MuiThemeProvider theme={store}>
+        <MuiThemeProvider theme={theme}>
           <Router>
             <Switch>
               {routes.map((r, i) => (
@@ -54,6 +57,7 @@ const App: React.FC = () => {
               ))}
             </Switch>
           </Router>
+          {/* <AppBar/> */}
         </MuiThemeProvider>
       </GlobalContext.Provider>
     </div>
