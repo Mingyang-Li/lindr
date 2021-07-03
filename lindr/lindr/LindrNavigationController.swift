@@ -25,13 +25,13 @@ class LindrNavigationController: UIViewController {
         view.addSubview(navigationBar)
         view.addSubview(tabBar)
         view.addSubview(centreViewParentView)
-        setupConstraints()
+        setupRootConstraints()
         
         setupNavigationBar()
         setupTabBar()
     }
     
-    private func setupConstraints() {
+    private func setupRootConstraints() {
         constrain(view,
                   navigationBar,
                   tabBar,
@@ -58,10 +58,32 @@ class LindrNavigationController: UIViewController {
     
     private func setupNavigationBar() {
         navigationBar.backgroundColor = .white
+        
+        let imageView = UIImageView()
+        navigationBar.addSubview(imageView)
+        imageView.image = #imageLiteral(resourceName: "NavigationBar")
+        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFit
+        
+        constrain(imageView,
+                  navigationBar) { (imageView,
+                                    navigationBar) in
+            imageView.edges == navigationBar.edges
+        }
     }
     
     private func setupTabBar() {
         tabBar.backgroundColor = .white
+        
+        let imageView = UIImageView()
+        tabBar.addSubview(imageView)
+        imageView.image = #imageLiteral(resourceName: "nav bar")
+        
+        constrain(imageView,
+                  navigationBar) { (imageView,
+                                    navigationBar) in
+            imageView.edges == navigationBar.edges
+        }
     }
     
     func setCentreView(centreView: UIView) {
