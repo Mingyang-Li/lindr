@@ -9,6 +9,8 @@ import CreditCardSync from './pages/integration/CreditCardSync';
 import LinkedInSync from './pages/integration/LinkedInSync';
 import theme from './theme/theme';
 import Container from '@material-ui/core/Container';
+import Main from './pages/main/Main';
+import { logicalExpression } from '@babel/types';
 
 
 interface routeData {
@@ -22,6 +24,11 @@ const App: React.FC = () => {
   const routes: routeData[] = [
     {
       path: "/",
+      component: <Main />,
+      exact: true
+    },
+    {
+      path: "/login",
       component: <Login />,
       exact: true
     },

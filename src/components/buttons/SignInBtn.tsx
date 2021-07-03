@@ -18,7 +18,7 @@ const SignInBtn: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <Link to="/swipe" style={{ textDecoration: 'none' }}>
+    <Link to="/" style={{ textDecoration: 'none' }}>
         <Button variant="outlined" color="secondary" className={classes.margin} fullWidth>
             Sign In
         </Button>

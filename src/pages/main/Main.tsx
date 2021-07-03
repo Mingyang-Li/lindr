@@ -20,3 +20,4 @@ const Main: React.FC<MainProps> = () => {
         </>
     )
 }
+export default Main;
