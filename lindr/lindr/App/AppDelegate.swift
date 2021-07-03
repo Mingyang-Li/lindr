@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let swipingViewModel = SwipingViewModel(navigationController: navigationController)
         let viewController = SwipingViewController(viewModel: swipingViewModel)
         
-        navigationController.viewControllers = [viewController]
+        navigationController.addChild(viewController)
+        navigationController.setCentreView(centreView: viewController.view) 
         
         window = UIWindow()
         window?.rootViewController = navigationController
