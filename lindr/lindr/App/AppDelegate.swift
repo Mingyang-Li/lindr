@@ -14,8 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let viewController = LindrSwipingViewController()
-        let navigationController = LindrNavigationController(rootViewController: viewController)
+        let navigationController = LindrNavigationController()
+        let swipingViewModel = SwipingViewModel(navigationController: navigationController)
+        let viewController = SwipingViewController(viewModel: swipingViewModel)
+        
+        navigationController.viewControllers = [viewController]
         
         window = UIWindow()
         window?.rootViewController = navigationController
