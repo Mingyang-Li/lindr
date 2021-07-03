@@ -14,6 +14,12 @@ class ProfileView: UIView {
     
     let profileImageView = UIImageView()
     
+    var hasDropShadow: Bool = false {
+        didSet {
+            layer.shadowOpacity = hasDropShadow ? 0.4 : 0
+        }
+    }
+    
     init() {
         super.init(frame: .zero)
         setupUI()
@@ -33,7 +39,6 @@ class ProfileView: UIView {
         addSubview(profileImageView)
         
         profileImageView.layer.cornerRadius = 20
-        layer.shadowOpacity = 0.4
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
         layer.shadowRadius = 12

@@ -14,8 +14,9 @@ class SwipingViewController: UIViewController {
     let viewModel: SwipingViewModel
     let disposeBag = DisposeBag()
     
-    var likeButton = UIButton()
-    var justBusinessButton = UIButton()
+    let likeAndJustBusinessButtonsParentView = UIView()
+    let likeButton = RoundedButton()
+    let justBusinessButton = RoundedButton()
     
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
@@ -53,7 +54,7 @@ class SwipingViewController: UIViewController {
     
     private func setupNoMoreProfilesLabel() {
         view.addSubview(noMoreProfilesLabel)
-        noMoreProfilesLabel.text = "No more profiles"
+        noMoreProfilesLabel.text = Resources.noMoreProfiles
         noMoreProfilesLabel.textColor = UIColor(white: 1 / 2, alpha: 1)
         
         constrain(view,
@@ -83,7 +84,39 @@ class SwipingViewController: UIViewController {
     }
     
     private func setupLikeAndBusinessButtons() {
+        view.addSubview(likeAndJustBusinessButtonsParentView)
+        likeAndJustBusinessButtonsParentView.addSubview(likeButton)
+        likeAndJustBusinessButtonsParentView.addSubview(justBusinessButton)
         
+        likeButton.backgroundColor = Resources.pink
+        justBusinessButton.backgroundColor = Resources.blue
+        
+        constrain(view,
+                  likeAndJustBusinessButtonsParentView,
+                  likeButton,
+                  justBusinessButton,
+                  topProfileView) { (view,
+                                     likeAndJustBusinessButtonsParentView,
+                                     likeButton,
+                                     justBusinessButton,
+                                     topProfileView) in
+            let size: CGFloat = 80
+            let padding: CGFloat = 20
+            
+            likeAndJustBusinessButtonsParentView.bottom == view.safeAreaLayoutGuide.bottom
+            likeAndJustBusinessButtonsParentView.top == topProfileView.bottom
+            likeAndJustBusinessButtonsParentView.left == view.left
+            likeAndJustBusinessButtonsParentView.right == view.right
+            
+            likeButton.centerY == likeAndJustBusinessButtonsParentView.centerY
+            justBusinessButton.centerY == likeAndJustBusinessButtonsParentView.centerY
+            likeButton.left == likeAndJustBusinessButtonsParentView.centerX + padding / 2
+            justBusinessButton.right == likeAndJustBusinessButtonsParentView.centerX - padding / 2
+            
+            likeButton.width == size
+            likeButton.height == likeButton.width
+            justBusinessButton.size == likeButton.size
+        }
     }
     
     private func setupBindings() {
@@ -103,6 +136,9 @@ class SwipingViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         topProfileView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(topProfileViewPanned(gesture:))))
+        
+        justBusinessButton.addTarget(self, action: #selector(doSwipeLeftAnimation), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(doSwipeRightAnimation), for: .touchUpInside)
     }
     
     @objc private func topProfileViewPanned(gesture: UIPanGestureRecognizer) {
@@ -114,39 +150,66 @@ class SwipingViewController: UIViewController {
             } else if horizontalTranslation >= minimumTranslationToSwipe {
                 doSwipeRightAnimation()
             } else {
-                doResetSwipeAnimation()
+                doCancelSwipeAnimation()
             }
         } else {
             topProfileView.transform = CGAffineTransform(translationX: horizontalTranslation, y: 0)
         }
     }
     
-    private func doSwipeLeftAnimation() {
+    @objc private func doSwipeLeftAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
             self.bottomProfileView.transform = .identity
         } completion: { (_) in
             self.viewModel.profileSwipeLeft()
-            self.doResetSwipeAnimation(animated: false)
+            self.doResetSwipeAnimation()
         }
     }
     
-    private func doSwipeRightAnimation() {
+    @objc private func doSwipeRightAnimation() {
         UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
             self.bottomProfileView.transform = .identity
         } completion: { (_) in
             self.viewModel.profileSwipeRight()
-            self.doResetSwipeAnimation(animated: false)
+            self.doResetSwipeAnimation()
         }
     }
     
-    private func doResetSwipeAnimation(animated: Bool = true) {
-        UIView.animate(withDuration: animated ? 0.3 : 0) {
+    // Used if the user doesn't fully swipe in one direction, making the top profile view move back
+    private func doCancelSwipeAnimation() {
+        UIView.animate(withDuration: 0.3) {
             self.topProfileView.transform = .identity
             self.bottomProfileView.transform = self.defaultBottomImageViewTransform
         }
     }
     
+    // Used after the swipe right/left animation once the next profile has been loaded
+    private func doResetSwipeAnimation() {
+        bottomProfileView.alpha = 0
+        topProfileView.transform = .identity
+        bottomProfileView.transform = defaultBottomImageViewTransform
+        
+        UIView.animate(withDuration: 0.3) {
+            self.bottomProfileView.alpha = 1
+        }
+    }
+    
 }
 
+fileprivate struct Resources {
+    
+    static let noMoreProfiles = "No more profiles"
+    
+    static let blue = UIColor(displayP3Red: 5 / 255,
+                              green: 110 / 255,
+                              blue: 251 / 255,
+                              alpha: 1)
+    
+    static let pink = UIColor(displayP3Red: 233 / 255,
+                              green: 64 / 255,
+                              blue: 87 / 255,
+                              alpha: 1)
+    
+}
