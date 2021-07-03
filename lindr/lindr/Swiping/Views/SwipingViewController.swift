@@ -20,6 +20,10 @@ class SwipingViewController: UIViewController {
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
     
+    var minimumTranslationToSwipe: CGFloat {
+        return view.bounds.width / 3
+    }
+    
     init(viewModel: SwipingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,8 +73,50 @@ class SwipingViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         viewModel.nextProfile.bind { [weak self] (viewModel) in
-            self?.bottomProfileView.setViewModel(viewModel: viewModel)
+            if let viewModel = viewModel {
+                self?.bottomProfileView.setViewModel(viewModel: viewModel)
+            } else {
+                self?.bottomProfileView.isHidden = true
+            }
         }.disposed(by: disposeBag)
+        
+        topProfileView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(topProfileViewPanned(gesture:))))
+    }
+    
+    @objc private func topProfileViewPanned(gesture: UIPanGestureRecognizer) {
+        let horizontalTranslation = gesture.translation(in: view).x
+        
+        if gesture.state == .ended {
+            if horizontalTranslation <= -minimumTranslationToSwipe {
+                doSwipeLeftAnimation()
+            } else if horizontalTranslation >= minimumTranslationToSwipe {
+                doSwipeRightAnimation()
+            } else {
+                doResetSwipeAnimation()
+            }
+        } else {
+            topProfileView.transform = CGAffineTransform(translationX: horizontalTranslation, y: 0)
+        }
+    }
+    
+    private func doSwipeLeftAnimation() {
+        UIView.animate(withDuration: 0.3) {
+            self.topProfileView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+        }
+        viewModel.profileSwipeLeft()
+    }
+    
+    private func doSwipeRightAnimation() {
+        UIView.animate(withDuration: 0.3) {
+            self.topProfileView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+        }
+        viewModel.profileSwipeRight()
+    }
+    
+    private func doResetSwipeAnimation() {
+        UIView.animate(withDuration: 0.3) {
+            self.topProfileView.transform = .identity
+        }
     }
     
 }

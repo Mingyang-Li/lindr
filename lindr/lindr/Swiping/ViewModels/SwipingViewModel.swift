@@ -16,7 +16,7 @@ class SwipingViewModel {
     lazy private(set) var currentProfile =
         BehaviorRelay<ProfileViewModel>(value: profiles[currentIndex])
     lazy private(set) var nextProfile =
-        BehaviorRelay<ProfileViewModel>(value: profiles[currentIndex + 1])
+        BehaviorRelay<ProfileViewModel?>(value: profiles[currentIndex + 1])
     
     private let currentIndex = 0
     
