@@ -12,10 +12,14 @@ struct ProfileViewModelFactory {
     static func getProfileViewModels() -> [ProfileViewModel] {
         
         return [
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile1")),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile2")),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile3")),
-            ProfileViewModel(image: #imageLiteral(resourceName: "Profile4"))
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile1"),
+                             matchesWithUser: false),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile2"),
+                             matchesWithUser: false),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile3"),
+                             matchesWithUser: false),
+            ProfileViewModel(image: #imageLiteral(resourceName: "Profile4"),
+                             matchesWithUser: true)
         ]
         
     }

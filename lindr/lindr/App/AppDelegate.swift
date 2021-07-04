@@ -11,19 +11,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: Coordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let navigationController = LindrNavigationController()
-        let swipingViewModel = SwipingViewModel(navigationController: navigationController)
-        let viewController = SwipingViewController(viewModel: swipingViewModel)
-        
-        navigationController.addChild(viewController)
-        navigationController.setCentreView(centreView: viewController.view) 
-        
         window = UIWindow()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        coordinator = Coordinator(window: window)
+        coordinator?.start()
         
         return true
     }

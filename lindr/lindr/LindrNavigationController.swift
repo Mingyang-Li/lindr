@@ -51,7 +51,7 @@ class LindrNavigationController: UIViewController {
             centreViewParentView.top == navigationBar.bottom
             centreViewParentView.bottom == tabBar.top
             centreViewParentView.centerX == centreViewParentView.centerX
-            centreViewParentView.width == centreViewParentView.width
+            centreViewParentView.width == view.width
             
             navigationBar.top == view.safeAreaLayoutGuide.top + 20
             navigationBar.centerX == view.centerX

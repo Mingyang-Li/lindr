@@ -18,6 +18,9 @@
 		C79159B626900D7900F06506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79159B426900D7900F06506 /* LaunchScreen.storyboard */; };
 		C79159CB2690102400F06506 /* LindrNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159CA2690102400F06506 /* LindrNavigationController.swift */; };
 		C79159CE2690107C00F06506 /* SwipingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159CD2690107C00F06506 /* SwipingViewModel.swift */; };
+		C7A6F601269140AE00749E8B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6F600269140AE00749E8B /* Coordinator.swift */; };
+		C7A6F6042691434900749E8B /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6F6032691434900749E8B /* MatchViewController.swift */; };
+		C7A6F6082691438100749E8B /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6F6072691438100749E8B /* MatchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		C79159B726900D7900F06506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C79159CA2690102400F06506 /* LindrNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LindrNavigationController.swift; sourceTree = "<group>"; };
 		C79159CD2690107C00F06506 /* SwipingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingViewModel.swift; sourceTree = "<group>"; };
+		C7A6F600269140AE00749E8B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C7A6F6032691434900749E8B /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		C7A6F6072691438100749E8B /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		F5E9B6A30A88D982E1123BC4 /* Pods-lindr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lindr.debug.xcconfig"; path = "Target Support Files/Pods-lindr/Pods-lindr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +76,7 @@
 		C7091D23269011AB006CEC8C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7A6F6032691434900749E8B /* MatchViewController.swift */,
 				C79159AD26900D7800F06506 /* SwipingViewController.swift */,
 				C7091D25269011CB006CEC8C /* ProfileView.swift */,
 			);
@@ -92,6 +99,7 @@
 				C79159CD2690107C00F06506 /* SwipingViewModel.swift */,
 				C7091D29269012B1006CEC8C /* ProfileViewModel.swift */,
 				C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */,
+				C7A6F6072691438100749E8B /* MatchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 				C79159B426900D7900F06506 /* LaunchScreen.storyboard */,
 				C79159B226900D7900F06506 /* Assets.xcassets */,
 				C79159A926900D7800F06506 /* AppDelegate.swift */,
+				C7A6F600269140AE00749E8B /* Coordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -275,11 +284,14 @@
 				C7091D2A269012B1006CEC8C /* ProfileViewModel.swift in Sources */,
 				C79159AE26900D7800F06506 /* SwipingViewController.swift in Sources */,
 				C79159AA26900D7800F06506 /* AppDelegate.swift in Sources */,
+				C7A6F6082691438100749E8B /* MatchViewModel.swift in Sources */,
 				C7091D4226903B5B006CEC8C /* IconButton.swift in Sources */,
+				C7A6F6042691434900749E8B /* MatchViewController.swift in Sources */,
 				C7091D26269011CB006CEC8C /* ProfileView.swift in Sources */,
 				C79159CE2690107C00F06506 /* SwipingViewModel.swift in Sources */,
 				C79159CB2690102400F06506 /* LindrNavigationController.swift in Sources */,
 				C7091D35269018C8006CEC8C /* ProfileViewModelFactory.swift in Sources */,
+				C7A6F601269140AE00749E8B /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

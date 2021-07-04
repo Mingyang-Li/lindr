@@ -10,5 +10,6 @@ import UIKit
 struct ProfileViewModel {
     
     var image: UIImage
+    var matchesWithUser: Bool
     
 }

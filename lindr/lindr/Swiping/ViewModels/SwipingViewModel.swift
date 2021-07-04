@@ -23,18 +23,24 @@ class SwipingViewModel {
         return currentIndex + 1
     }
     
-    private weak var navigationController: LindrNavigationController?
+    private weak var coordinator: Coordinator?
     
-    init(navigationController: LindrNavigationController) {
-        self.navigationController = navigationController
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
     }
     
     func profileSwipeLeft() {
+        checkForMatch()
         loadNextProfile()
     }
     
     func profileSwipeRight() {
+        checkForMatch()
         loadNextProfile()
+    }
+    
+    func requestProfileInformationDisplay() {
+        
     }
     
     private func loadNextProfile() {
@@ -47,6 +53,14 @@ class SwipingViewModel {
             nextProfile.accept(profiles[nextIndex])
         } else {
             nextProfile.accept(nil)
+        }
+    }
+    
+    private func checkForMatch() {
+        guard let currentProfile = currentProfile.value else { return }
+        
+        if currentProfile.matchesWithUser {
+            coordinator?.showMatchScreen(profile: currentProfile)
         }
     }
     
