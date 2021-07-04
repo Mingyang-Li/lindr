@@ -17,6 +17,7 @@ class SwipingViewController: UIViewController {
     let likeAndJustBusinessButtonsParentView = UIView()
     let likeButton = RoundedIconButton()
     let justBusinessButton = RoundedIconButton()
+    private let centerView = UIView()
     
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
@@ -47,17 +48,30 @@ class SwipingViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        setupCentreView()
         setupNoMoreProfilesLabel()
         setupProfileViews()
         setupLikeAndBusinessButtons()
     }
     
+    private func setupCentreView() {
+        view.addSubview(centerView)
+        
+        constrain(view,
+                  centerView) { (view,
+                                 centerView) in
+            centerView.center == view.center
+            centerView.width == view.width - 60
+            centerView.height == view.height - 100
+        }
+    }
+    
     private func setupNoMoreProfilesLabel() {
-        view.addSubview(noMoreProfilesLabel)
+        centerView.addSubview(noMoreProfilesLabel)
         noMoreProfilesLabel.text = Resources.noMoreProfiles
         noMoreProfilesLabel.textColor = UIColor(white: 1 / 2, alpha: 1)
         
-        constrain(view,
+        constrain(centerView,
                   noMoreProfilesLabel) { (view,
                                           noMoreProfilesLabel) in
             noMoreProfilesLabel.center == view.center
@@ -65,18 +79,19 @@ class SwipingViewController: UIViewController {
     }
     
     private func setupProfileViews() {
-        view.addSubview(bottomProfileView)
-        view.addSubview(topProfileView)
+        centerView.addSubview(bottomProfileView)
+        centerView.addSubview(topProfileView)
         bottomProfileView.transform = defaultBottomImageViewTransform
         
-        constrain(view,
+        constrain(centerView,
                   topProfileView,
                   bottomProfileView) { (view,
                                         topProfileView,
                                         bottomProfileView) in
-            bottomProfileView.width == view.width * 0.75
-            bottomProfileView.height == view.height * 0.6
-            bottomProfileView.center == view.center
+            bottomProfileView.centerX == view.centerX
+            bottomProfileView.width == view.width
+            bottomProfileView.height == view.height * 3 / 4
+            bottomProfileView.top == view.top + 20
             
             topProfileView.size == bottomProfileView.size
             topProfileView.center == bottomProfileView.center
@@ -84,7 +99,7 @@ class SwipingViewController: UIViewController {
     }
     
     private func setupLikeAndBusinessButtons() {
-        view.addSubview(likeAndJustBusinessButtonsParentView)
+        centerView.addSubview(likeAndJustBusinessButtonsParentView)
         likeAndJustBusinessButtonsParentView.addSubview(likeButton)
         likeAndJustBusinessButtonsParentView.addSubview(justBusinessButton)
         

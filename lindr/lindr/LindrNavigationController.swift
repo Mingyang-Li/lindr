@@ -8,8 +8,6 @@
 import UIKit
 import Cartography
 
-
-
 class LindrNavigationController: UIViewController {
     
     private(set) var centreView: UIView?
@@ -17,11 +15,16 @@ class LindrNavigationController: UIViewController {
     private(set) var tabBar = UIView()
     private var centreViewParentView = UIView()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
     override func viewDidLoad() {
         setupUI()
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(navigationBar)
         view.addSubview(tabBar)
         view.addSubview(centreViewParentView)
@@ -39,20 +42,21 @@ class LindrNavigationController: UIViewController {
                                            navigationBar,
                                            tabBar,
                                            centreViewParentView) in
-            navigationBar.top == view.top
-            tabBar.bottom == view.bottom
-            navigationBar.bottom == view.safeAreaLayoutGuide.top + 50
-            tabBar.top == view.safeAreaLayoutGuide.bottom - 50
+            
+            tabBar.bottom == view.safeAreaLayoutGuide.bottom
+            tabBar.width == 6 * tabBar.height
+            tabBar.centerX == view.centerX
+            tabBar.width == view.width
             
             centreViewParentView.top == navigationBar.bottom
             centreViewParentView.bottom == tabBar.top
-            
-            navigationBar.centerX == view.centerX
-            navigationBar.width == view.width
-            tabBar.centerX == view.centerX
-            tabBar.width == view.width
             centreViewParentView.centerX == centreViewParentView.centerX
             centreViewParentView.width == centreViewParentView.width
+            
+            navigationBar.top == view.safeAreaLayoutGuide.top + 20
+            navigationBar.centerX == view.centerX
+            navigationBar.width == 0.6 * view.width
+            navigationBar.height == 40
         }
     }
     
@@ -62,7 +66,6 @@ class LindrNavigationController: UIViewController {
         let imageView = UIImageView()
         navigationBar.addSubview(imageView)
         imageView.image = #imageLiteral(resourceName: "NavigationBar")
-        imageView.contentMode = .scaleAspectFit
         imageView.contentMode = .scaleAspectFit
         
         constrain(imageView,
@@ -78,11 +81,12 @@ class LindrNavigationController: UIViewController {
         let imageView = UIImageView()
         tabBar.addSubview(imageView)
         imageView.image = #imageLiteral(resourceName: "nav bar")
+        imageView.contentMode = .scaleAspectFit
         
         constrain(imageView,
-                  navigationBar) { (imageView,
-                                    navigationBar) in
-            imageView.edges == navigationBar.edges
+                  tabBar) { (imageView,
+                             tabBar) in
+            imageView.edges == tabBar.edges
         }
     }
     
