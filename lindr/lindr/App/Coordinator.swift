@@ -13,6 +13,8 @@ class Coordinator {
     
     private(set) var navigationController = LindrNavigationController()
     private(set) var swipingViewController: SwipingViewController!
+    private(set) var matchViewController: MatchViewController!
+    private(set) var messagingViewController: MessagingViewController!
     
     init(window: UIWindow?) {
         self.window = window
@@ -31,15 +33,32 @@ class Coordinator {
     func showMatchScreen(profile: ProfileViewModel) {
         let matchViewModel = MatchViewModel(profile: profile,
                                             coordinator: self)
-        let matchViewController = MatchViewController(viewModel: matchViewModel)
-        matchViewController.modalPresentationStyle = .fullScreen
+        matchViewController = MatchViewController(viewModel: matchViewModel)
+        matchViewController.modalPresentationStyle = .overFullScreen
         matchViewController.modalTransitionStyle = .crossDissolve
         
-        swipingViewController.fadeToWhite { (_) in
-            self.swipingViewController.present(matchViewController, animated: true)
+        navigationController.animateOut { (_) in
+            self.swipingViewController.present(self.matchViewController, animated: true)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                matchViewController.animateIn()
+                self.matchViewController.animateIn()
+            }
+        }
+    }
+    
+    func showMessagingScreen(profile: ProfileViewModel) {
+        let messagingViewModel = MessagingViewModel(profile: profile,
+                                                    coordinator: self)
+        messagingViewController = MessagingViewController(viewModel: messagingViewModel)
+        
+        swipingViewController.removeFromParent()
+        navigationController.addChild(messagingViewController)
+        navigationController.setCentreView(centreView: messagingViewController.view)
+        navigationController.navigationBarImage.accept(#imageLiteral(resourceName: "NavigationBarMessages"))
+        
+        matchViewController.animateOut { (_) in
+            self.matchViewController.dismiss(animated: true) {
+                self.navigationController.animateIn()
             }
         }
     }

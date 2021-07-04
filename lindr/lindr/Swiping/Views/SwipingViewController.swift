@@ -9,7 +9,7 @@ import UIKit
 import Cartography
 import RxSwift
 
-class SwipingViewController: UIViewController {
+class SwipingViewController: BaseViewController {
     
     let viewModel: SwipingViewModel
     let disposeBag = DisposeBag()
@@ -18,7 +18,6 @@ class SwipingViewController: UIViewController {
     let likeButton = RoundedIconButton()
     let justBusinessButton = RoundedIconButton()
     private let centerView = UIView()
-    private let whiteView = UIView()
     
     let topProfileView = ProfileView()
     let bottomProfileView = ProfileView()
@@ -53,7 +52,6 @@ class SwipingViewController: UIViewController {
         setupNoMoreProfilesLabel()
         setupProfileViews()
         setupLikeAndBusinessButtons()
-        setupWhiteView()
     }
     
     private func setupCentreView() {
@@ -138,17 +136,6 @@ class SwipingViewController: UIViewController {
         }
     }
     
-    private func setupWhiteView() {
-        view.addSubview(whiteView)
-        
-        whiteView.backgroundColor = .white
-        whiteView.alpha = 0
-        
-        constrain(view, whiteView) { (view, whiteView) in
-            whiteView.edges == view.edges
-        }
-    }
-    
     private func setupBindings() {
         viewModel.currentProfile.bind { [weak self] (viewModel) in
             if let viewModel = viewModel {
@@ -224,12 +211,6 @@ class SwipingViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.bottomProfileView.alpha = 1
         }
-    }
-    
-    func fadeToWhite(completion: @escaping (Bool) -> () = { _ in }) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.whiteView.alpha = 1
-        }, completion: completion)
     }
     
 }

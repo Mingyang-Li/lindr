@@ -12,6 +12,9 @@
 		C7091D2A269012B1006CEC8C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D29269012B1006CEC8C /* ProfileViewModel.swift */; };
 		C7091D35269018C8006CEC8C /* ProfileViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */; };
 		C7091D4226903B5B006CEC8C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7091D4126903B5B006CEC8C /* IconButton.swift */; };
+		C73C03AD26915D47007A3EBD /* MessagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C03AC26915D47007A3EBD /* MessagingViewModel.swift */; };
+		C73C03B126915D53007A3EBD /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C03B026915D53007A3EBD /* MessagingViewController.swift */; };
+		C73C03B626915F8F007A3EBD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C03B526915F8F007A3EBD /* BaseViewController.swift */; };
 		C79159AA26900D7800F06506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159A926900D7800F06506 /* AppDelegate.swift */; };
 		C79159AE26900D7800F06506 /* SwipingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79159AD26900D7800F06506 /* SwipingViewController.swift */; };
 		C79159B326900D7900F06506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79159B226900D7900F06506 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		C7091D29269012B1006CEC8C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C7091D34269018C8006CEC8C /* ProfileViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelFactory.swift; sourceTree = "<group>"; };
 		C7091D4126903B5B006CEC8C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		C73C03AC26915D47007A3EBD /* MessagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewModel.swift; sourceTree = "<group>"; };
+		C73C03B026915D53007A3EBD /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		C73C03B526915F8F007A3EBD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C79159A626900D7800F06506 /* lindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79159A926900D7800F06506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79159AD26900D7800F06506 /* SwipingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingViewController.swift; sourceTree = "<group>"; };
@@ -122,9 +128,36 @@
 		C7091D4026903B4E006CEC8C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C79159CA2690102400F06506 /* LindrNavigationController.swift */,
 				C7091D4126903B5B006CEC8C /* IconButton.swift */,
+				C73C03B526915F8F007A3EBD /* BaseViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C73C03A726915CA1007A3EBD /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				C73C03AA26915D28007A3EBD /* ViewModels */,
+				C73C03A826915CE4007A3EBD /* Views */,
+			);
+			path = Messaging;
+			sourceTree = "<group>";
+		};
+		C73C03A826915CE4007A3EBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C73C03B026915D53007A3EBD /* MessagingViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C73C03AA26915D28007A3EBD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C73C03AC26915D47007A3EBD /* MessagingViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		C791599D26900D7800F06506 = {
@@ -150,8 +183,8 @@
 			children = (
 				C7091D3F26903B4A006CEC8C /* Generic */,
 				C7091D24269011B5006CEC8C /* Swiping */,
+				C73C03A726915CA1007A3EBD /* Messaging */,
 				C79159BF26900DCB00F06506 /* App */,
-				C79159CA2690102400F06506 /* LindrNavigationController.swift */,
 			);
 			path = lindr;
 			sourceTree = "<group>";
@@ -284,8 +317,11 @@
 				C7091D2A269012B1006CEC8C /* ProfileViewModel.swift in Sources */,
 				C79159AE26900D7800F06506 /* SwipingViewController.swift in Sources */,
 				C79159AA26900D7800F06506 /* AppDelegate.swift in Sources */,
+				C73C03B126915D53007A3EBD /* MessagingViewController.swift in Sources */,
 				C7A6F6082691438100749E8B /* MatchViewModel.swift in Sources */,
+				C73C03B626915F8F007A3EBD /* BaseViewController.swift in Sources */,
 				C7091D4226903B5B006CEC8C /* IconButton.swift in Sources */,
+				C73C03AD26915D47007A3EBD /* MessagingViewModel.swift in Sources */,
 				C7A6F6042691434900749E8B /* MatchViewController.swift in Sources */,
 				C7091D26269011CB006CEC8C /* ProfileView.swift in Sources */,
 				C79159CE2690107C00F06506 /* SwipingViewModel.swift in Sources */,

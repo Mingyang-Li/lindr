@@ -8,11 +8,10 @@
 import UIKit
 import Cartography
 
-class MatchViewController: UIViewController {
+class MatchViewController: BaseViewController {
     
     private let viewModel: MatchViewModel
     
-    private let whiteView = UIView()
     private let mainStackView = UIStackView()
     private lazy var keepBrowsingButton = UIButton(type: .custom)
     private lazy var sayHelloButton = UIButton(type: .custom)
@@ -29,13 +28,15 @@ class MatchViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
+        setupBindings()
     }
     
     private func setupUI() {
         view.backgroundColor = .white
-        setupWhiteView()
         setupMainView()
+        applyAnimateOutTransforms()
     }
     
     private func setupMainView() {
@@ -59,11 +60,6 @@ class MatchViewController: UIViewController {
         sayHelloButton.setImage(Resources.sayHello, for: .normal)
         keepBrowsingButton.setImage(Resources.keepBrowsing, for: .normal)
         
-        sayHelloButton.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
-        keepBrowsingButton.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
-        matchOverlayImageView.transform = CGAffineTransform(translationX: 0, y: -view.bounds.height)
-        matchTextImageView.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
-        
         constrain(mainStackView,
                   view,
                   matchOverlayImageView,
@@ -84,27 +80,41 @@ class MatchViewController: UIViewController {
         }
     }
     
-    private func setupWhiteView() {
-        view.addSubview(whiteView)
-        whiteView.backgroundColor = .white
-        constrain(view,
-                  whiteView) { (view,
-                                whiteView) in
-            whiteView.edges == view.edges
-        }
+    private func setupBindings() {
+        sayHelloButton.addTarget(self, action: #selector(sayHelloTapped), for: .touchUpInside)
+        keepBrowsingButton.addTarget(self, action: #selector(keepBrowsingTapped), for: .touchUpInside)
     }
     
-    func animateIn() {
-        UIView.animate(withDuration: 0.3) {
+    @objc private func sayHelloTapped() {
+        viewModel.handleSayHello()
+    }
+    
+    @objc private func keepBrowsingTapped() {
+        viewModel.handleKeepBrowsing()
+    }
+    
+    func animateIn(completion: @escaping (Bool) -> () = { _ in }) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.whiteView.alpha = 0
-        }
-        
-        UIView.animate(withDuration: 0.5) {
             self.sayHelloButton.transform = .identity
             self.keepBrowsingButton.transform = .identity
             self.matchOverlayImageView.transform = .identity
             self.matchTextImageView.transform = .identity
-        }
+        }, completion: completion)
+    }
+    
+    func animateOut(completion: @escaping (Bool) -> () = { _ in }) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.whiteView.alpha = 1
+            self.applyAnimateOutTransforms()
+        }, completion: completion)
+    }
+    
+    private func applyAnimateOutTransforms() {
+        sayHelloButton.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
+        keepBrowsingButton.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
+        matchOverlayImageView.transform = CGAffineTransform(translationX: 0, y: -view.bounds.height)
+        matchTextImageView.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
     }
     
 }

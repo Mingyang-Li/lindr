@@ -18,4 +18,12 @@ class MatchViewModel {
         self.coordinator = coordinator
     }
     
+    func handleSayHello() {
+        coordinator?.showMessagingScreen(profile: profile)
+    }
+    
+    func handleKeepBrowsing() {
+        
+    }
+    
 }
