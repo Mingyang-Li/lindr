@@ -37,7 +37,10 @@ class Coordinator {
         
         swipingViewController.fadeToWhite { (_) in
             self.swipingViewController.present(matchViewController, animated: true)
-            matchViewController.animateIn()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                matchViewController.animateIn()
+            }
         }
     }
     
